@@ -1,10 +1,15 @@
+import java.text.DecimalFormat;
+
 public class Main {
+
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     public static void main(String[] args) {
 
         System.out.println(fahrenheitToCelsius(212));
         System.out.println(inchesToMeters(1000));
         System.out.println(sumOfDigits(1000));
         minutesToYearsAndDays(3456789);
+        System.out.println(calculateBMI(75,1.75));
 
     }
 
@@ -37,5 +42,10 @@ public class Main {
         long years = minutes/60/24/365;
         long days = ((minutes/60/24) % 365);
         System.out.println(minutes + " minutes equals about " + years + " years, and " + days + " days.");
+    }
+
+    //calculating BMI index based on given weight and height
+    public static String calculateBMI(int weight, double height) {
+        return df.format((weight / Math.pow(height,2)));
     }
 }

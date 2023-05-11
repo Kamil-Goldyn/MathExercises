@@ -3,6 +3,8 @@ public class Main {
 
         System.out.println(fahrenheitToCelsius(212));
         System.out.println(inchesToMeters(1000));
+        System.out.println(sumOfDigits(1000));
+
     }
 
     //converting temperature from Fahrenheit to Celsius degrees.
@@ -14,4 +16,18 @@ public class Main {
     public static double inchesToMeters(double inches) {
         return inches*0.0254;
     }
+
+    //adding all the digits from given integer between 0 and 1000
+    public static int sumOfDigits(int number) {
+        int sum = 0;
+
+        if(number > 0 && number <= 1000) {
+            for(int i = number; i > 0; i = i/10) {
+            sum += i % 10;
+            }
+        }
+        return sum;
+    }
+
+
 }

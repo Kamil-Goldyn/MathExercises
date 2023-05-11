@@ -1,4 +1,7 @@
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -12,6 +15,7 @@ public class Main {
         minutesToYearsAndDays(3456789);
         System.out.println(calculateBMI(75,1.75));
         System.out.println(calculateSpeed(2500,5,56,23));
+        breakIntegerIntoDigits(new Scanner(System.in));
 
     }
 
@@ -58,5 +62,16 @@ public class Main {
         double speedCalculate = distanceInKm / totalTime;
         System.out.println("You beat " + distanceInKm + "kms in " + df.format(totalTime) + " hours. Average speed equals: ");
         return speedCalculate;
+    }
+
+    //breaking given integer into separated digits
+    public static void breakIntegerIntoDigits(Scanner scanner) {
+        String input = scanner.nextLine();
+        List<Character> digits = new ArrayList<>();
+
+        for(int i = 0; i < input.length(); i++) {
+            digits.add(input.charAt(i));
+        }
+        digits.forEach(System.out::println);
     }
 }

@@ -132,6 +132,7 @@ public class Main {
         return highestNumber;
     }
 
+    //returning greatest number from numbers added do collection
     public static Double greatestFromCollection(Scanner scanner) {
         LinkedList<Double> storage = new LinkedList<>();
 
@@ -156,6 +157,7 @@ public class Main {
         return greatest;
     }
 
+    //calculating the factorial
     public static int factorialNumber(int number) {
         if (number != 0) {
             return number * factorialNumber(number - 1);
@@ -164,6 +166,7 @@ public class Main {
         }
     }
 
+    //calculating Fibonacci Sequence
     public static void fibonacciSequence(int count) {
 
         if (count > 0) {

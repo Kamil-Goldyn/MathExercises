@@ -1,13 +1,13 @@
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
     private static final DecimalFormat df = new DecimalFormat("0.00");
     public static void main(String[] args) {
 
+        /*
+            YOU CAN JUST UNCOMMENT THESE METHODS, WHICH YOU WANT TO CHECK
 
         System.out.println(fahrenheitToCelsius(212));
         System.out.println(inchesToMeters(1000));
@@ -16,6 +16,16 @@ public class Main {
         System.out.println(calculateBMI(75,1.75));
         System.out.println(calculateSpeed(2500,5,56,23));
         breakIntegerIntoDigits(new Scanner(System.in));
+        quadraticEquation(1,5,1);
+        double result = greatestNumber(3,4,2);
+        System.out.println(result);
+        Scanner scanner = new Scanner(System.in);
+        Double greatest = greatestFromCollection(scanner);
+        System.out.println("Greatest number equals: " + greatest);
+        scanner.close();
+        */
+
+
 
     }
 
@@ -24,10 +34,12 @@ public class Main {
         return ((temp-32)*5/9);
     }
 
+
     //converting inches to meters
     public static double inchesToMeters(double inches) {
         return inches*0.0254;
     }
+
 
     //adding all the digits from given integer between 0 and 1000
     public static int sumOfDigits(int number) {
@@ -43,6 +55,7 @@ public class Main {
         return sum;
     }
 
+
     //converting minutes to years and days
     public static void minutesToYearsAndDays(int minutes) {
         long years = minutes/60/24/365;
@@ -50,10 +63,12 @@ public class Main {
         System.out.println(minutes + " minutes equals about " + years + " years, and " + days + " days.");
     }
 
+
     //calculating BMI index based on given weight and height
     public static String calculateBMI(int weight, double height) {
         return df.format((weight / Math.pow(height,2)));
     }
+
 
     //calculating average speed based od covered distance, and total time it took to beat
     public static double calculateSpeed(double distanceInMeters, int hours, double minutes, double seconds) {
@@ -64,6 +79,7 @@ public class Main {
         return speedCalculate;
     }
 
+
     //breaking given integer into separated digits
     public static void breakIntegerIntoDigits(Scanner scanner) {
         String input = scanner.nextLine();
@@ -73,5 +89,60 @@ public class Main {
             digits.add(input.charAt(i));
         }
         digits.forEach(System.out::println);
+    }
+
+    //solving quadratic equations
+    public static void quadraticEquation(float a, float b, float c) {
+        double delta = (Math.pow(b,2) - 4*a*c);
+        double firstResult = 0;
+        double secondResult = 0;
+        if(delta > 0) {
+            firstResult = ((-b - Math.sqrt(delta)) /2*a);
+            secondResult = ((-b + Math.sqrt(delta)) /2*a);
+            System.out.println("Equation has two results: " + firstResult + " and: " +secondResult);
+        } else if (delta == 0) {
+            firstResult = -b/2*a;
+            System.out.println("Equation has only one result: " + firstResult);
+        } else {
+            System.out.println("This equation doesn't have any results.");
+        }
+    }
+
+    //returning greatest number from three given
+    public static double greatestNumber(double firstNumber, double secondNumber, double thirdNumber) {
+        double highestNumber = 0;
+        System.out.println("Enter three numbers, to check which one is the greatest one:");
+        if(firstNumber > secondNumber && firstNumber > thirdNumber) {
+            highestNumber = firstNumber;
+        } else if (secondNumber > firstNumber && secondNumber > thirdNumber) {
+            highestNumber = secondNumber;
+        } else {
+            highestNumber = thirdNumber;
+        }
+        return highestNumber;
+    }
+
+    public static Double greatestFromCollection(Scanner scanner) {
+        LinkedList<Double> storage = new LinkedList<>();
+
+        System.out.println("Enter the numbers that you want to add to the collection. Enter '0' to end.");
+
+        while (true) {
+            double number = scanner.nextDouble();
+
+            if(number == 0) {
+                break;
+            }
+            storage.add(number);
+        }
+
+        Double greatest = storage.get(0);
+
+        for(Double number : storage) {
+            if (number > greatest) {
+                greatest = number;
+            }
+        }
+        return greatest;
     }
 }

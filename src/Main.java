@@ -10,30 +10,31 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*
-            YOU CAN JUST UNCOMMENT THESE METHODS, WHICH YOU WANT TO CHECK
+//            YOU CAN JUST UNCOMMENT THESE METHODS, WHICH YOU WANT TO CHECK
+//
+//        System.out.println(fahrenheitToCelsius(212));
+//        System.out.println(inchesToMeters(1000));
+//        System.out.println(sumOfDigits(1000));
+//        minutesToYearsAndDays(3456789);
+//        System.out.println(calculateBMI(75,1.75));
+//        System.out.println(calculateSpeed(2500,5,56,23));
+//        breakIntegerIntoDigits(new Scanner(System.in));
+//        quadraticEquation(1,5,1);
+//        fibonacciSequence(10);
+//
+//        double result = greatestNumber(3,4,2);
+//        System.out.println(result);
+//
+//        Scanner scanner = new Scanner(System.in);
+//        Double greatest = greatestFromCollection(scanner);
+//        System.out.println("Greatest number equals: " + greatest);
+//        scanner.close();
+//
+//        int i = factorialNumber(5);
+//        System.out.println(i);
+//
+//        int i = closeToNextFibonacciNumber(350);
 
-        System.out.println(fahrenheitToCelsius(212));
-        System.out.println(inchesToMeters(1000));
-        System.out.println(sumOfDigits(1000));
-        minutesToYearsAndDays(3456789);
-        System.out.println(calculateBMI(75,1.75));
-        System.out.println(calculateSpeed(2500,5,56,23));
-        breakIntegerIntoDigits(new Scanner(System.in));
-        quadraticEquation(1,5,1);
-        fibonacciSequence(10);
-
-        double result = greatestNumber(3,4,2);
-        System.out.println(result);
-
-        Scanner scanner = new Scanner(System.in);
-        Double greatest = greatestFromCollection(scanner);
-        System.out.println("Greatest number equals: " + greatest);
-        scanner.close();
-
-        int i = factorialNumber(5);
-        System.out.println(i);
-         */
 
 
 
@@ -176,5 +177,27 @@ public class Main {
             System.out.println(n3);
             fibonacciSequence(count-1);
         }
+    }
+
+    //calculating next closest number from Fibonacci sequence, to the given one
+    public static int closeToNextFibonacciNumber(int givenNumber) {
+
+        int n1 = 0;
+        int n2 = 1;
+        int nextNumber = 0;
+
+        while (nextNumber < givenNumber) {
+            int n3 = n1 + n2;
+            n1 = n2;
+            n2 = n3;
+            nextNumber = n3;
+        }
+
+        if (Math.abs(nextNumber - givenNumber) > Math.abs(n2 - givenNumber)) {
+            nextNumber = n2;
+        }
+
+        System.out.println("Closest number from Fibonacci sequence to number " + givenNumber + " is: " + nextNumber);
+        return nextNumber;
     }
 }
